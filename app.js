@@ -3,10 +3,6 @@ window.onload = function () {
 
 }
 
-
-    //variables for the search machine
-    //checkboxes for amazon or for walmart quieries
-    //function itemSearch(){}
     //===============================//
     // web scrape logic w/ puppetter here  //
     //===============================//
@@ -34,25 +30,42 @@ window.onload = function () {
     // shopping cart app logic here     //
     //===============================//
     
-   // const itemOne = document.getElementById("btnOne").innerHTML;
-   // const itemTwo = document.getElementById("btnTwo").innerHTML;
-   // const itemThree = document.getElementById("btnThree").innerHTML;
-
 function runApp () {
 
     const cart  = document.querySelector('#cartItemNum')
-    var  cartNum = 0;
-
+    var  itemNum = 0;
+    var cartPrice = []
     var itemCartBtn = document.querySelector('#store');
-    itemCartBtn.addEventListener('click', function () {
-        cartNum++;
-        cartNum.innerText = carNum
-        //get price total by id and add
-        
-        
-
-        if(cartNum < 0){ calculatePrice();}
     
+    itemCartBtn.addEventListener('click', function (event) {
+        var btnValu = event.target.value
+        console.log(btnValu)
+        var totalOrder = ""
+        
+        itemNum++;
+        cart.innerText = itemNum;
+
+        cartPrice.push(btnValu)
+            
+        if (itemNum < 1){
+            console.log(cartPrice)
+
+        } else if ( itemNum > 1){
+            
+            totalOrder =  cartPrice.reduce(add,0);
+
+        }
+
+        function add(a,b) {
+        return a + b;
+
+        
+        }
+        
+        
+        console.log("the total order is: " + "$ "+ totalOrder )
+
+      
             
                     
     })
@@ -60,38 +73,11 @@ function runApp () {
 }
         
 
-    //calcualtes the final price of all selected items
-
-    calculatePrice = function (final_price, cartItem) {
-        var checkOutTotal = final_price;
-        var cart = cartItem
-        var totalOrder = ""
-
-        if (carNum <= 1) {
-        totalOrder == final_price;
-
-        } else {
-
-        totalOrder =  final_price.reduce(add,0);
-
-        }
-
-        function add(a,b) {
-        return a + b;
-
-        }
-    
-        console.log("the total order is: " + "$ "+ totalOrder )
-
-     itemNumber.innerText = ("the total price is " + totalOrder)
-   
-        }
-
-
         //=======================//
         // checkout functions
         //=======================// 
         //give option to add or removie items with add/delte button
+        /*
         const startCheckOut =document.querySelector('#checkOutBtn');
         
         const del = document.querySelector('#delBtn');
@@ -111,3 +97,5 @@ function runApp () {
 
 
          })
+
+         */
