@@ -39,7 +39,7 @@ function runApp () {
         
     })
 
-}
+
         
         //=======================//
         // checkout functions
@@ -48,14 +48,14 @@ function runApp () {
         
         const startCheckOut =document.querySelector('#checkOutBtn');
         
-        const del = document.querySelector('#delBtn');
-         const purchase = document.querySelector('purchBtn');
+        const delt = document.querySelector('#delBtn');
+         const purchase = document.querySelector('#purchBtn');
 
-         del.addEventListener('click', function() {
+         delt.addEventListener('click', function() {
                var cartItems = cartNum
                cartItems--;
                cartNum.innerText = cartItems
-               //pop the last element from the stack
+               //pop the last element from the stack of total items
                cartPrice.pop(btnValu)
 
          });
@@ -68,4 +68,4 @@ function runApp () {
 
          })
 
-         
+}       //end of run app function
