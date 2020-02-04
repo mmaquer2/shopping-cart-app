@@ -2,36 +2,13 @@ window.onload = function () {
     this.runApp();
 
 }
-
     //===============================//
-    // web scrape logic w/ puppetter here  //
-    //===============================//
-
-
-    // web scraper with puppetter
-    /*
-    const browser = await puppeteer.launch();
-
-    const page = await browser.newPage();
-    await page.goto('https://cargurus.com')
-
-    console.log(await page.content());
-    await page.screenshot({path: 'screenshot.png'});
-
-    //returns items and their prices to the main page, and can run runApp to operate the store as needed
-
-    await browser.close();
-    */
-
-    //display the shop search form once search is complete 
-
-        
-    //===============================//
-    // shopping cart app logic here     //
+    // shopping cart logic here   //
     //===============================//
     
 function runApp () {
 
+    const cartTotal  = document.querySelector('#cartPriceLoc')
     const cart  = document.querySelector('#cartItemNum')
     var  itemNum = 0;
     var cartPrice = []
@@ -40,53 +17,46 @@ function runApp () {
     itemCartBtn.addEventListener('click', function (event) {
         var btnValu = event.target.value
         console.log(btnValu)
-        var totalOrder = ""
+        var totalOrder = []
         
         itemNum++;
-        cart.innerText = itemNum;
+        cart.innerText = "You have " + itemNum + " item in your cart.";
 
         cartPrice.push(btnValu)
             
-        if (itemNum < 1){
+        if (itemNum <= 1){
             console.log(cartPrice)
+            console.log('the total order is: ' + cartPrice)
+            cartTotal.innerText = "Your total is: $ " + cartPrice;
 
         } else if ( itemNum > 1){
             
-            totalOrder =  cartPrice.reduce(add,0);
+            totalOrder =  cartPrice.reduce(function(a, b){return a+b;})
+            console.log("the total order is: " + "$ "+ totalOrder )
+            cartTotal.innerText = "Your total is: $ " + totalOrder;
 
         }
-
-        function add(a,b) {
-        return a + b;
-
         
-        }
-        
-        
-        console.log("the total order is: " + "$ "+ totalOrder )
-
-      
-            
-                    
     })
 
 }
         
-
         //=======================//
         // checkout functions
         //=======================// 
         //give option to add or removie items with add/delte button
-        /*
+        
         const startCheckOut =document.querySelector('#checkOutBtn');
         
         const del = document.querySelector('#delBtn');
          const purchase = document.querySelector('purchBtn');
 
-         del.addEventListener('click', function(cartNum) {
+         del.addEventListener('click', function() {
                var cartItems = cartNum
                cartItems--;
                cartNum.innerText = cartItems
+               //pop the last element from the stack
+               cartPrice.pop(btnValu)
 
          });
 
@@ -98,4 +68,4 @@ function runApp () {
 
          })
 
-         */
+         
