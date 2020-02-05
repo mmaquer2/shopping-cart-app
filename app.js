@@ -13,27 +13,31 @@ function runApp () {
     var  itemNum = 0;
     var cartPrice = []
     var itemCartBtn = document.querySelector('#store');
+    var totalOrder = []
     
     itemCartBtn.addEventListener('click', function (event) {
         var btnValu = event.target.value
+       var price = Math.floor(btnValu)
         console.log(btnValu)
-        var totalOrder = []
+        
         
         itemNum++;
         cart.innerText = "You have " + itemNum + " item in your cart.";
 
-        cartPrice.push(btnValu)
+        cartPrice.push(price)
             
         if (itemNum <= 1){
             console.log(cartPrice)
             console.log('the total order is: ' + cartPrice)
             cartTotal.innerText = "Your total is: $ " + cartPrice;
 
-        } else if ( itemNum > 1){
+        } else  {
             
             totalOrder =  cartPrice.reduce(function(a, b){return a+b;})
+
             console.log("the total order is: " + "$ "+ totalOrder )
             cartTotal.innerText = "Your total is: $ " + totalOrder;
+
 
         }
         
@@ -52,18 +56,20 @@ function runApp () {
          const purchase = document.querySelector('#purchBtn');
 
          delt.addEventListener('click', function() {
-               var cartItems = cartNum
-               cartItems--;
-               cartNum.innerText = cartItems
+            itemTotal = itemNum
+            var cart = itemTotal - 1
+               
+            cart.innerText = cart
                //pop the last element from the stack of total items
-               cartPrice.pop(btnValu)
+               //cartPrice.pop(btnValu)
 
          });
 
          purchase.addEventListener('click', function() {
                 
                 
-                alert('Thank you for your purchase!')
+                alert('Thank you for your purchase! your total is $' +totalOrder)
+                //zero out all store values
 
 
          })
