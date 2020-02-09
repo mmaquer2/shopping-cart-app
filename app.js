@@ -2,6 +2,13 @@ window.onload = function () {
     this.runApp();
 
 }
+
+//things to add:
+    // add which items the person has
+    //go to a seperate checkout section
+    //
+
+
     //===============================//
     // shopping cart logic here   //
     //===============================//
